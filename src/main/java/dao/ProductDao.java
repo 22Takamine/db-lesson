@@ -16,7 +16,7 @@ public class ProductDao {
     private static final String SQL_REGISTER = "INSERT INTO products (product_name, price) VALUES (?, ?)";
     private static final String SQL_INSERT = "INSERT INTO products (product_id, product_name, price) VALUES (?, ?, ?)";
     private static final String SQL_UPDATE = "UPDATE products SET product_name = ?, price = ? WHERE product_id = ?";
-    private static final String SQL_DELETE = "DELETE FROM products WHERE product_id = ?";
+    private static final String SQL_DELETE = "DELETE FROM products WHERE product_name = ?";
 
     private Connection connection;
 
@@ -92,9 +92,9 @@ public class ProductDao {
         }
     }
 
-    public int delete(int productId) {
+    public int delete(String productName) {
         try (PreparedStatement stmt = connection.prepareStatement(SQL_DELETE)) {
-            stmt.setInt(1, productId);
+            stmt.setString(1, productName);
 
             return stmt.executeUpdate();
         } catch (SQLException e) {

@@ -23,7 +23,7 @@ public class Product {
 
 	
 	public Integer getProductId() {
-	    return productId;
+	    return this.productId;
 	}
 
 	public void setProductId(Integer productId) {
@@ -31,7 +31,7 @@ public class Product {
 	}
 
 	public String getProductName() {
-	    return productName;
+	    return this.productName;
 	}
 
 	public void setProductName(String productName) {
@@ -39,7 +39,7 @@ public class Product {
 	}
 
 	public Integer getPrice() {
-	    return price;
+	    return this.price;
 	}
 
 	public void setPrice(Integer price) {

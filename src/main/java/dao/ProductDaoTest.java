@@ -108,6 +108,7 @@ public class ProductDaoTest {
         assertEquals("鉛筆", product.getProductName());
         assertEquals(Integer.valueOf(50), product.getPrice());
 
+        
         //product.setProductName("test2");
         product.setPrice(60);
         productDao.update(product);
@@ -118,16 +119,16 @@ public class ProductDaoTest {
         assertEquals(Integer.valueOf(60), product.getPrice());
     }
 
-    @Test
-    public void deleteでデータを削除できる() {
-        Product product = productDao.findByProductId(101);
-        assertNotNull(product);
-
-        productDao.delete(101);
-
-        product = productDao.findByProductId(101);
-        assertNull(product);
-    }
+//    @Test
+//    public void deleteでデータを削除できる() {
+//        Product product = productDao.findByProductId(101);
+//        assertNotNull(product);
+//
+//        productDao.delete(101);
+//
+//        product = productDao.findByProductId(101);
+//        assertNull(product);
+//    }
     
 
 

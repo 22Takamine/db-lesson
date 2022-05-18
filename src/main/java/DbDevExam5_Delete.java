@@ -5,24 +5,23 @@ import dao.ProductDao;
 import entity.Product;
 import util.DbUtil;
 
-public class DbExam5 {
-    public static void main(String[] args) {
+public class DbDevExam5_Delete {
+	public static void main(String[] args) {
     	Connection connection;
 	   	ProductDao productDao;
+	   	
+	   	String deleteName ="ボールペン";
 	   	Product data;
 	   	String textId = "product_id:";
 	   	String textName = "product_name:";
 	   	String textPrice = "price:";
-	  	String name = "ボールペン";
-		int price = 200;
-	   	 
+	   	
 	   	connection = DbUtil.getConnection();
 	   	productDao = new ProductDao(connection);
 	   	
-	   	Product newProduct = new Product(name,price);
-        productDao.register(newProduct);
+	   	productDao.delete(deleteName);
 	   	
-    	List<Product> list = productDao.findAll();
+	   	List<Product> list = productDao.findAll();
         
         for(int i = 0; i < list.size(); i++) {
         	data = list.get(i);
@@ -32,6 +31,8 @@ public class DbExam5 {
         	System.out.println(textPrice + data.getPrice());
         	
         }
+        
+    	
+    	
     }
-    
 }
