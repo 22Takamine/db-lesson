@@ -18,12 +18,20 @@ body {
 </head>
 <body>
   <h1>検索結果</h1>
-  <p>データを取得しました</p>
-  
-  <p>product_id:${fn:escapeXml(productData.productId)}</p>
-  <p>product_name:${fn:escapeXml(productData.productName)}</p>
-  <p>price:${fn:escapeXml(productData.price)}</p>
-  
+  <table border="1">
+    <tr>
+      <th>product_id</th>
+      <th>product_name</th>
+      <th>price</th>
+    </tr>
+    <c:forEach var="product" items="${productList}">
+      <tr>
+        <td>${fn:escapeXml(product.productId)}</td>
+        <td>${fn:escapeXml(product.productName)}</td>
+        <td>${fn:escapeXml(product.price)}</td>
+      </tr>
+    </c:forEach>
+  </table>
   <form action="top.jsp">
     <button type="submit" name="btn" value="back">戻る</button>
   </form>

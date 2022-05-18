@@ -22,8 +22,9 @@ body {
   <c:if test="${not empty msg}">
     <p>${msg}</p>
   </c:if>
-  <form action="login" method="post">
+  <form action="serch" method="post">
     product id: <input type="text" name="id" value="${fn:escapeXml(param.id)}"><br>
+    price: <input type="text" name="price" value="${fn:escapeXml(param.price)}"><br>
     <button type="submit">検索</button>
   </form>
  
