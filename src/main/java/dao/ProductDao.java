@@ -13,10 +13,6 @@ public class ProductDao {
 
     private static final String SQL_SELECT_ALL = "SELECT product_id, product_name, price FROM products ORDER BY product_id";
     private static final String SQL_SELECT_WHERE_USER_ID = "SELECT product_id, product_name, price FROM products WHERE product_id = ?";
-    private static final String SQL_REGISTER = "INSERT INTO products (product_name, price) VALUES (?, ?)";
-    private static final String SQL_INSERT = "INSERT INTO products (product_id, product_name, price) VALUES (?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE products SET product_name = ?, price = ? WHERE product_id = ?";
-    private static final String SQL_DELETE = "DELETE FROM products WHERE product_name = ?";
 
     private Connection connection;
 
@@ -41,18 +37,6 @@ public class ProductDao {
         return list;
     }
     
-    public void register(Product product) {
-    	try (PreparedStatement stmt = connection.prepareStatement(SQL_REGISTER)) {
-            //stmt.setInt(1, product.getProductId());
-            stmt.setString(1, product.getProductName());
-            stmt.setInt(2, product.getPrice());
-
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    
     public Product findByProductId(int productId) {
         try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_WHERE_USER_ID)) {
             stmt.setInt(1, productId);
@@ -66,40 +50,6 @@ public class ProductDao {
         }
 
         return null;
-    }
-    
-    public int insert(Product product) {
-        try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT)) {
-            stmt.setInt(1, product.getProductId());
-            stmt.setString(2, product.getProductName());
-            stmt.setInt(3, product.getPrice());
-
-            return stmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    
-    public int update(Product product) {
-        try (PreparedStatement stmt = connection.prepareStatement(SQL_UPDATE)) {
-            stmt.setString(1, product.getProductName());
-            stmt.setInt(2, product.getPrice());
-            stmt.setInt(3, product.getProductId());
-
-            return stmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public int delete(String productName) {
-        try (PreparedStatement stmt = connection.prepareStatement(SQL_DELETE)) {
-            stmt.setString(1, productName);
-
-            return stmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 
